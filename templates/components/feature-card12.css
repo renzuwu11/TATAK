@@ -1,0 +1,66 @@
+.feature-card12-feature-card {
+  width: 147px;
+  height: 140px;
+  display: flex;
+  padding: var(--dl-space-space-unit);
+  max-width: var(--dl-size-size-maxwidth);
+  box-shadow: 5px 5px 10px 0px rgba(18, 18, 18, 0.1);
+  transition: 0.3s;
+  align-items: flex-start;
+  padding-top: var(--dl-space-space-halfunit);
+  flex-direction: column;
+  padding-bottom: var(--dl-space-space-twounits);
+  justify-content: flex-start;
+}
+.feature-card12-feature-card:hover {
+  transform: scale(1.02);
+}
+.feature-card12-text {
+  width: 165px;
+  height: 23px;
+  margin-bottom: var(--dl-space-space-twounits);
+}
+.feature-card12-image {
+  width: 127px;
+  height: 55px;
+  object-fit: cover;
+  padding-left: 2px;
+  border-radius: var(--dl-radius-radius-radius4);
+  padding-bottom: 5px;
+}
+.feature-card12-root-class-name {
+  top: -157px;
+  right: -944px;
+  width: var(--dl-size-size-xxlarge);
+  position: absolute;
+}
+.feature-card12-root-class-name2 {
+  top: -152px;
+  right: -625px;
+  width: var(--dl-size-size-xxlarge);
+  position: absolute;
+}
+.feature-card12-root-class-name3 {
+  top: 24px;
+  left: 99px;
+  width: var(--dl-size-size-xxlarge);
+  position: absolute;
+}
+.feature-card12-root-class-name4 {
+  top: 24px;
+  right: -943px;
+  width: var(--dl-size-size-xxlarge);
+  position: absolute;
+}
+.feature-card12-root-class-name5 {
+  top: 24px;
+  right: -623px;
+  width: var(--dl-size-size-xxlarge);
+  position: absolute;
+}
+.feature-card12-root-class-name6 {
+  top: -157px;
+  left: 100px;
+  width: var(--dl-size-size-xxlarge);
+  position: absolute;
+}

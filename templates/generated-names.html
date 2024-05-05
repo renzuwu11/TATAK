@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Generated Names - TATAK</title>
+    <meta property="og:title" content="Generated Names - TATAK">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta property="twitter:card" content="summary_large_image">
+    <style data-tag="reset-style-sheet">
+        html {
+            line-height: 1.15;
+        }
+        body {
+            margin: 0;
+            overflow-y: hidden; /* Hide vertical scrollbar */
+        }
+        * {
+            box-sizing: border-box;
+            border-width: 0;
+            border-style: solid;
+        }
+        p, li, ul, pre, div, h1, h2, h3, h4, h5, h6, figure, blockquote, figcaption {
+            margin: 0;
+            padding: 0;
+        }
+        button {
+            background-color: transparent;
+        }
+        button, input, optgroup, select, textarea {
+            font-family: inherit;
+            font-size: 100%;
+            line-height: 1.15;
+            margin: 0;
+        }
+        button, select {
+            text-transform: none;
+        }
+        button, [type="button"], [type="reset"], [type="submit"] {
+            -webkit-appearance: button;
+        }
+        button::-moz-focus-inner, [type="button"]::-moz-focus-inner, [type="reset"]::-moz-focus-inner, [type="submit"]::-moz-focus-inner {
+            border-style: none;
+            padding: 0;
+        }
+        button:-moz-focus, [type="button"]:-moz-focus, [type="reset"]:-moz-focus, [type="submit"]:-moz-focus {
+            outline: 1px dotted ButtonText;
+        }
+        a {
+            color: inherit;
+            text-decoration: inherit;
+        }
+        input {
+            padding: 2px 4px;
+        }
+        img {
+            display: block;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+    <style data-tag="default-style-sheet">
+        html {
+            font-family: Inter;
+            font-size: 16px;
+        }
+        body {
+            font-weight: 400;
+            font-style: normal;
+            text-decoration: none;
+            text-transform: none;
+            letter-spacing: normal;
+            line-height: 1.15;
+            color: var(--dl-color-gray-black);
+            background-color: var(--dl-color-gray-white);
+        }
+    </style>
+    <link rel="stylesheet" href="https://unpkg.com/animate.css@4.1.1/animate.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" data-tag="font">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@200;300;400;500;600;700;800&amp;display=swap" data-tag="font">
+    <link rel="stylesheet" href="https://unpkg.com/@teleporthq/teleport-custom-scripts/dist/style.css">
+    <style>
+        @keyframes fade-in-left {
+            0% {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        /* Additional CSS styles for the pink container */
+        .name-container {
+            background-color: #ffdae4;
+            border: 1px solid #000000;
+            border-radius: 3px;
+            padding: 15px;
+            margin: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .generated-names-names-container {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr); /* 7 columns */
+            gap: 10px; /* Adjust the gap between squares */
+        }
+    </style>
+</head>
+<body>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <div>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/generated-names.css') }}">    
+        <div class="generated-names-container">
+            <header data-thq="thq-navbar" class="generated-names-navbar-interactive navbarContainer">
+                <div class="generated-names-container01">
+                    <a href="{{ url_for('index') }}" class="generated-names-navlink">
+                        <img alt="image" src="static/public/tatak-logo-200h.png" class="generated-names-image">
+                    </a>
+                </div>
+                <div data-thq="thq-navbar-nav" class="generated-names-desktop-menu">
+                    <nav class="generated-names-links">
+                        <span class="generated-names-nav52">Name Generator</span>
+                    </nav>
+                </div>
+            </header>
+        <div class="generated-names-container">
+            <header class="generated-names-hero heroContainer">
+                <span style="padding-top: 70px; padding-bottom: 10px; padding-left: 5px;" class="generated-names-text">Generated Business Names</span>
+                <div style="padding-top: 10px; padding-bottom: 40px; text-align: center; font-size: 13.5px;" class="generated-names-subheader">Thank you for using TATAK! <br> Click the logo on the top left to go back home.</div>
+                <div class="generated-names-names-container">
+                    <!-- Loop through each generated name -->
+                    {% for name in generated_names %}
+                    <div class="name-container">{{ name }}</div>
+                    {% endfor %}
+                </div>
+                <div>
+                    <br><br>
+                    <!-- HTML with onclick event handlers -->
+                    <button style="margin-top: 77px; border-color:black; margin-left: -95px;" id="prevBtn" class="generated-names-button1 button" onclick="prevPage()">&lt;</button>
+                    <span id="pagination-controls"></span>
+                    <button style="margin-top: 77px; border-color:black; margin-right: -91px;" id="nextBtn" class="generated-names-button button" onclick="nextPage()">&gt;</button>
+
+                </div>
+            </header>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script data-section-id="navbar" src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
+    <script>
+        // Get all name containers
+        var nameContainers = document.querySelectorAll('.name-container');
+        var currentPage = 0;
+        var pageSize = 28; // 7 columns * 4 rows
+
+        // Function to show names for the current page
+        function showNamesForPage(page) {
+            var startIndex = page * pageSize;
+            var endIndex = (page + 1) * pageSize;
+
+            nameContainers.forEach(function(container, index) {
+                if (index >= startIndex && index < endIndex) {
+                    container.style.display = 'inline-block';
+                } else {
+                    container.style.display = 'none';
+                }
+            });
+
+            updatePaginationControls();
+        }
+
+        // Function to update pagination controls
+        function updatePaginationControls() {
+            var totalPages = Math.ceil(nameContainers.length / pageSize);
+            var paginationControls = document.getElementById("pagination-controls");
+            paginationControls.textContent = `Page ${currentPage + 1} of ${totalPages}`;
+        }
+
+        // Function to show next page
+        function nextPage() {
+            currentPage++;
+            if (currentPage >= Math.ceil(nameContainers.length / pageSize)) {
+                currentPage = Math.floor(nameContainers.length / pageSize);
+            }
+            showNamesForPage(currentPage);
+        }
+
+        // Function to show previous page
+        function prevPage() {
+            currentPage--;
+            if (currentPage < 0) {
+                currentPage = 0;
+            }
+            showNamesForPage(currentPage);
+        }
+
+        // Initially show names for the first page
+        showNamesForPage(currentPage);
+    </script>
+</body>
+</html>

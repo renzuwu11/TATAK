@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Name-Generator - TATAK</title>
+    <meta property="og:title" content="Name-Generator - TATAK">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta property="twitter:card" content="summary_large_image">
+    <style data-tag="reset-style-sheet">
+        html { line-height: 1.15; }
+        body { margin: 0; }
+        * { box-sizing: border-box; border-width: 0; border-style: solid; }
+        p, li, ul, pre, div, h1, h2, h3, h4, h5, h6, figure, blockquote, figcaption { margin: 0; padding: 0; }
+        button { background-color: transparent; }
+        button, input, optgroup, select, textarea { font-family: inherit; font-size: 100%; line-height: 1.15; margin: 0; }
+        button, select { text-transform: none; }
+        button, [type="button"], [type="reset"], [type="submit"] { -webkit-appearance: button; }
+        button::-moz-focus-inner, [type="button"]::-moz-focus-inner, [type="reset"]::-moz-focus-inner, [type="submit"]::-moz-focus-inner { border-style: none; padding: 0; }
+        button:-moz-focus, [type="button"]:-moz-focus, [type="reset"]:-moz-focus, [type="submit"]:-moz-focus { outline: 1px dotted ButtonText; }
+        a { color: inherit; text-decoration: inherit; }
+        input { padding: 2px 4px; }
+        img { display: block; }
+        html { scroll-behavior: smooth; }
+    </style>
+    <style data-tag="default-style-sheet">
+        html {
+            font-family: Inter;
+            font-size: 16px;
+        }
+        body {
+            font-weight: 400;
+            font-style: normal;
+            text-decoration: none;
+            text-transform: none;
+            letter-spacing: normal;
+            line-height: 1.15;
+            color: var(--dl-color-gray-black);
+            background-color: var(--dl-color-gray-white);
+        }
+    </style>
+    <link rel="stylesheet" href="https://unpkg.com/animate.css@4.1.1/animate.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" data-tag="font">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@200;300;400;500;600;700;800&amp;display=swap" data-tag="font">
+    <link rel="stylesheet" href="https://unpkg.com/@teleporthq/teleport-custom-scripts/dist/style.css">
+    <style>
+        @keyframes fade-in-left {
+            0% {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<div>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/name-generator.css') }}">
+    <div class="name-generator-container">
+        <div class="name-generator-header">
+            <header data-thq="thq-navbar" class="name-generator-navbar-interactive navbarContainer">
+                <div class="name-generator-container1">
+                    <a href="{{ url_for('index') }}" class="name-generator-navlink">
+                        <img alt="image" src="static/public/tatak-logo-200h.png" class="name-generator-image">
+                    </a>
+                </div>
+                <div data-thq="thq-navbar-nav" class="name-generator-desktop-menu">
+                    <nav class="name-generator-links">
+                        <span class="name-generator-nav52">Name Generator </span>
+                    </nav>
+                </div>
+                <div data-thq="thq-burger-menu" class="name-generator-burger-menu">
+                    <svg viewBox="0 0 1024 1024" class="name-generator-icon socialIcons">
+                        <path d="M128 554.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 298.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 810.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667z"></path>
+                    </svg>
+                </div>
+            </header>
+        </div>
+        <div class="name-generator-hero">
+            <header class="name-generator-hero1 heroContainer">
+                <span class="name-generator-text">
+                    <span>Find a business name </span><br>
+                    <span>that’s perfect for you!</span>
+                </span>
+                <div class="name-generator-container2">
+                    <span> </span>
+                    <span class="name-generator-text05">
+                        <span>
+                            Coming up with a name can be challenging. It's a tough task,
+                            no doubt about it.
+                        </span><br>
+                        <span>
+                            But fear not, our business name generator is here to lend a
+                            hand.
+                        </span>
+                    </span>
+                    <span class="name-generator-text09">
+                        <span>
+                            Enter a business type, a keyword/theme, naming style,
+                            and
+                        </span><br>
+                        <span>preferred length&nbsp;</span>
+                        <span>
+                            to generate a variety of business name suggestions.
+                        </span>
+                    </span>
+                    <form method="POST" action="{{ url_for('generated_names') }}">
+                        <button type="submit" class="name-generator-navlink1 button">Generate Business Name</button>    
+                    <span class="name-generator-text15">Business Type:</span>
+                    <!-- Dynamic dropdown for business types -->
+                    <label for="industry">
+                        <select required="true" class="name-generator-select" id="industry" name="industry">
+                        <option value="Select your business type" class="name-generator-option">Select your business type</option></label>
+                        {% for type in business_types %}
+                            <option value="{{ type }}">{{ type }}</option>
+                        {% endfor %}
+                    </select>
+                    <!-- End of dynamic dropdown -->               
+                    <span class="name-generator-text14">Theme or Keyword:</span>
+                        <input type="text" id="keyword" name="keyword" placeholder="i.e. Food, Technology, Apparel" class="name-generator-textinput input">
+                    <span class="name-generator-text16">Name Style:</span>
+                    <span class="name-generator-text17">Length:</span>
+                </div>
+            </header>
+        </div>
+        <select id="style" name="style" class="name-generator-select1">
+            <option value="Select business name type" class="name-generator-option08">Select business name style</option>
+            <option value="Auto">Auto</option>
+            <option value="Brandable">Brandable</option>
+            <option value="Language">Language</option>
+            <option value="Evocative">Evocative</option>
+            <option value="Alternate Spelling">Alternate Spelling</option>
+            <option value="Dictionary">Dictionary</option>
+            <option value="Rhyme">Rhyme</option>
+        </select>
+        <select id="lengths" name="lengths" class="name-generator-select2">
+            <option value="Select name length" class="name-generator-option16">Select name length</option>
+            <option value="Short">Short</option>
+            <option value="Medium">Medium</option>
+            <option value="Long">Long</option>
+        </select>
+    </div>
+    </form> 
+</div>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+<script data-section-id="navbar" src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
+</body>
+</html>
