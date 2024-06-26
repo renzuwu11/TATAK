@@ -13,7 +13,7 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
-    overflow: hidden; /* Prevent overflow */
+    overflow: hidden;
 }
 
 
@@ -40,11 +40,11 @@ body {
     margin-bottom: 15px;
     padding: 8px;
     box-sizing: border-box;
-    border: 1px solid black; /* Add black border */
+    border: 1px solid black; 
 }
 
 .form-container input[type="number"] {
-    width: calc(100% - 30px); /* Adjust width to account for px text */
+    width: calc(100% - 30px); 
 }
 
 .form-container .px-label {
@@ -55,8 +55,8 @@ body {
 .separator {
     width: 1px;
     height: 500px;
-    background-color: rgba(0, 0, 0, 0.1); /* Slightly transparent separator */
-    margin: 0 20px; /* Adjust margin for centering */
+    background-color: rgba(0, 0, 0, 0.1); 
+    margin: 0 20px; 
 }
 
 .logo-preview-container {
@@ -66,7 +66,7 @@ body {
     align-items: center;
     justify-content: center;
     padding: 20px;
-    overflow: hidden; /* Remove vertical scroll */
+    overflow: hidden; 
 }
 
 .logo-preview {
@@ -78,13 +78,13 @@ body {
     background-color: #f8f8f8;
     border: 1px solid #ccc;
     box-sizing: border-box;
-    max-width: 100%; /* Ensure it doesn't overflow horizontally */
-    max-height: calc(100vh - 160px); /* Ensure it fits within the viewport */
+    max-width: 100%; 
+    max-height: calc(100vh - 160px);
 }
 
 #logo-text {
     font-size: 48px;
-    font-weight: bold; /* Ensure bold font in the preview */
+    font-weight: bold; 
     text-align: center;
 }
 
@@ -97,9 +97,9 @@ body {
     border-width: 0px;
     text-decoration: none;
     background-color: rgb(255, 218, 228);
-    padding: 10px 20px; /* Add padding for better appearance */
-    cursor: pointer; /* Change cursor to pointer */
-    border-radius: 5px; /* Add border-radius for rounded corners */
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
 #download-logo:hover {
@@ -135,8 +135,8 @@ body {
     flex-direction: row;
     background-color: #ffffff;
     display: flex;
-    align-items: center; /* Center items vertically */
-    justify-content: space-between; /* Space items evenly */
+    align-items: center; 
+    justify-content: space-between; 
     width: 100%;
 }
 
@@ -165,7 +165,7 @@ body {
 .color-input-wrapper {
     display: flex;
     align-items: center;
-    margin-bottom: 5px; /* Increased margin */
+    margin-bottom: 5px;
 }
 
 .color-input-wrapper input[type="color"] {
@@ -179,7 +179,7 @@ body {
 }
 
 .color-input-wrapper span {
-    margin: 0 10px; /* Adjust margin */
+    margin: 0 10px; /
 }
 
 .arrow {
@@ -197,8 +197,8 @@ body {
     width: calc(2 * var(--disk-radius));
     height: calc(2 * var(--disk-radius));
     position: relative;
-    margin-left: 18px; /* Add margin to the left */
-    margin-bottom: 15px; /* Add margin to the right */
+    margin-left: 18px; 
+    margin-bottom: 15px; 
     display: flex;
     align-items: center;
     justify-content: center;
@@ -206,7 +206,7 @@ body {
 
 
 .angle-input input {
-    display: none; /* Hide the input field */
+    display: none; 
 }
 
 .angle-input .pivot {
@@ -216,9 +216,9 @@ body {
     width: calc(2.4 * var(--pivot-radius));
     height: calc(2.4 * var(--pivot-radius));
     position: absolute;
-    top: 10%; /* Center vertically */
-    left: -10%; /* Center horizontally */
-    transform: translate(-50%, -50%); /* Translate to the center */
+    top: 10%; 
+    left: -10%; 
+    transform: translate(-50%, -50%); 
 }
 
 .angle-input .pivot:before {

@@ -288,6 +288,13 @@
   flex-direction: row;
   justify-content: space-between;
 }
+#intro-animation {
+  width: 10%; 
+  display: block;
+  margin: 0 auto; 
+  margin-top: 35vh;
+}
+
 @media(max-width: 991px) {
   .home-hero1 {
     flex-direction: column;
@@ -373,10 +380,4 @@
     text-align: center;
     margin-bottom: var(--dl-space-space-oneandhalfunits);
   }
-}
-#intro-animation {
-  width: 10%; /* Adjust the width as needed */
-  display: block;
-  margin: 0 auto; /* Center the video horizontally */
-  margin-top: 35vh;
 }

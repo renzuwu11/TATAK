@@ -46,7 +46,6 @@ def generated_names_page():
 def logo_maker():
     if request.method == 'POST':
         business_name = request.form['business_name']
-        # Redirect directly to create-logo with business_name as query parameter
         return redirect(url_for('create_logo', business_name=business_name))
     return render_template('logo-maker.html')
 

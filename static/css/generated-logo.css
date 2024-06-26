@@ -76,7 +76,7 @@
   display: flex;
   width: 100%;
   max-width: 1200px;
-  margin-top: 120px; /* Adjust margin-top to avoid overlap with the header */
+  margin-top: 120px; 
 }
 
 .logo-maker-sidebar {
@@ -92,7 +92,7 @@
   align-items: center;
   justify-content: center;
   padding: 20px;
-  width: 50%; /* Adjust width if necessary */
+  width: 50%; 
 }
 
 .logo-placeholder {
@@ -113,7 +113,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%; /* Ensure it takes up the full width of the parent */
+  width: 100%; 
 }
 
 .logo-maker-row {
@@ -121,7 +121,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%; /* Ensure it takes up the full width of the parent */
+  width: 100%; 
 }
 
 .logo-maker-row.same-line {
@@ -131,10 +131,10 @@
 }
 
 .logo-maker-dropdown {
-  margin-top: 10px; /* Add margin for spacing */
-  width: auto; /* Adjust width if necessary */
-  border: 1px solid black; /* Add black border */
-  padding: 5px; /* Add padding for better appearance */
+  margin-top: 10px;
+  width: auto; 
+  border: 1px solid black; 
+  padding: 5px;
 }
 
 .logo-maker-download-button {
@@ -143,11 +143,11 @@
   border-width: 0px;
   text-decoration: none;
   background-color: rgb(255, 218, 228);
-  padding: 10px 20px; /* Add padding for better appearance */
-  cursor: pointer; /* Change cursor to pointer */
-  border-radius: 5px; /* Add border-radius for rounded corners */
-  margin-top: 10px; /* Add margin for spacing */
-  margin-left: 10px; /* Space between the dropdown and the button */
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px; 
+  margin-top: 10px; 
+  margin-left: 10px;
 }
 
 .logo-maker-download-button:hover {
@@ -162,7 +162,7 @@
   align-items: center;
   justify-content: center;
   padding: 20px;
-  overflow: hidden; /* Remove vertical scroll */
+  overflow: hidden; 
 }
 
 .logo-preview {
@@ -174,8 +174,8 @@
   background-color: #f8f8f8;
   border: 1px solid #ccc;
   box-sizing: border-box;
-  max-width: 100%; /* Ensure it doesn't overflow horizontally */
-  max-height: calc(100vh - 160px); /* Ensure it fits within the viewport */
+  max-width: 100%;
+  max-height: calc(100vh - 160px); 
 }
 
 #opacity-range {
@@ -184,7 +184,7 @@
   -webkit-appearance: none;
   appearance: none;
   height: 8px;
-  background: #FFDAE4; /* Pink color matching the download button */
+  background: #FFDAE4; 
   border-radius: 5px;
   outline: none;
   transition: background 0.3s;
@@ -195,7 +195,7 @@
   appearance: none;
   width: 20px;
   height: 20px;
-  background: #E895AB; /* Darker pink for the slider thumb */
+  background: #E895AB; 
   cursor: pointer;
   border-radius: 50%;
   transition: background 0.3s;
@@ -204,7 +204,7 @@
 #opacity-range::-moz-range-thumb {
   width: 20px;
   height: 20px;
-  background: #E895AB; /* Darker pink for the slider thumb */
+  background: #E895AB; 
   cursor: pointer;
   border-radius: 50%;
   transition: background 0.3s;
@@ -213,7 +213,7 @@
 #opacity-range::-ms-thumb {
   width: 20px;
   height: 20px;
-  background: #E895AB; /* Darker pink for the slider thumb */
+  background: #E895AB;
   cursor: pointer;
   border-radius: 50%;
   transition: background 0.3s;
@@ -222,8 +222,8 @@
 .separator {
   width: 1px;
   height: 500px;
-  background-color: rgba(0, 0, 0, 0.1); /* Slightly transparent separator */
-  margin: 0 20px; /* Adjust margin for centering */
+  background-color: rgba(0, 0, 0, 0.1);
+  margin: 0 20px; 
 }
 
 @media(max-width: 991px) {

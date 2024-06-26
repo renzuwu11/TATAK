@@ -6,56 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
     <style data-tag="reset-style-sheet">
-        html {
-            line-height: 1.15;
-        }
-        body {
-            margin: 0;
-        }
-        * {
-            box-sizing: border-box;
-            border-width: 0;
-            border-style: solid;
-        }
-        p, li, ul, pre, div, h1, h2, h3, h4, h5, h6, figure, blockquote, figcaption {
-            margin: 0;
-            padding: 0;
-        }
-        button {
-            background-color: transparent;
-        }
-        button, input, optgroup, select, textarea {  
-            font-family: inherit;  
-            font-size: 100%;  
-            line-height: 1.15;  
-            margin: 0;
-        }
-        button, select {  
-            text-transform: none;
-        }
-        button, [type="button"], [type="reset"], [type="submit"] {  
-            -webkit-appearance: button;
-        }
-        button::-moz-focus-inner, [type="button"]::-moz-focus-inner, [type="reset"]::-moz-focus-inner, [type="submit"]::-moz-focus-inner {  
-            border-style: none;  
-            padding: 0;
-        }
-        button:-moz-focus, [type="button"]:-moz-focus, [type="reset"]:-moz-focus, [type="submit"]:-moz-focus {  
-            outline: 1px dotted ButtonText;
-        }
-        a {  
-            color: inherit;  
-            text-decoration: inherit;
-        }
-        input {  
-            padding: 2px 4px;
-        }
-        img {  
-            display: block;
-        }
-        html { 
-            scroll-behavior: smooth;  
-        }
+        html { line-height: 1.15; }
+        body { margin: 0; }
+        * { box-sizing: border-box; border-width: 0; border-style: solid; }
+        p, li, ul, pre, div, h1, h2, h3, h4, h5, h6, figure, blockquote, figcaption { margin: 0; padding: 0; }
+        button { background-color: transparent; }
+        button, input, optgroup, select, textarea { font-family: inherit; font-size: 100%; line-height: 1.15; margin: 0; }
+        button, select { text-transform: none; }
+        button, [type="button"], [type="reset"], [type="submit"] { -webkit-appearance: button; }
+        button::-moz-focus-inner, [type="button"]::-moz-focus-inner, [type="reset"]::-moz-focus-inner, [type="submit"]::-moz-focus-inner { border-style: none; padding: 0; }
+        button:-moz-focus, [type="button"]:-moz-focus, [type="reset"]:-moz-focus, [type="submit"]:-moz-focus { outline: 1px dotted ButtonText; }
+        a { color: inherit; text-decoration: inherit; }
+        input { padding: 2px 4px; }
+        img { display: block; }
+        html { scroll-behavior: smooth; }
     </style>
     <style data-tag="default-style-sheet">
         html {
@@ -202,7 +166,6 @@
             const font = new FontFace(fontFamily, `url(${fontUrl})`);
             font.load().then(loadedFont => {
                 document.fonts.add(loadedFont);
-                // Re-render the canvas to ensure the font is applied
                 updateLogoText();
                 updateLogoSize();
                 updateFontStyle();
@@ -215,26 +178,26 @@
         }
 
         function updateLogoText() {
-    const maxLength = 15;
-    const businessNameInput = document.getElementById('business-name');
-    const businessName = businessNameInput.value;
+            const maxLength = 15;
+            const businessNameInput = document.getElementById('business-name');
+            const businessName = businessNameInput.value;
 
-    if (businessName.length > maxLength) {
-        businessNameInput.setCustomValidity(`Business name must be no more than ${maxLength} characters.`);
-        businessNameInput.reportValidity();
-        businessNameInput.value = businessName.substring(0, maxLength);
-    } else {
-        businessNameInput.setCustomValidity('');
-    }
+            if (businessName.length > maxLength) {
+                businessNameInput.setCustomValidity(`Business name must be no more than ${maxLength} characters.`);
+                businessNameInput.reportValidity();
+                businessNameInput.value = businessName.substring(0, maxLength);
+            } else {
+                businessNameInput.setCustomValidity('');
+            }
 
-    const logoText = document.getElementById('logo-text');
-    logoText.textContent = businessName || "Your Business Name";
-}
+            const logoText = document.getElementById('logo-text');
+            logoText.textContent = businessName || "Your Business Name";
+        }
 
-document.addEventListener("DOMContentLoaded", function() {
-    const businessNameInput = document.getElementById('business-name');
-    businessNameInput.addEventListener('input', updateLogoText);
-});
+        document.addEventListener("DOMContentLoaded", function() {
+            const businessNameInput = document.getElementById('business-name');
+            businessNameInput.addEventListener('input', updateLogoText);
+        });
 
         function updateLogoSize() {
             const [width, height] = logoSizeSelect.value.split('x');
@@ -319,7 +282,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
             // Draw text
             const fontSize = parseInt(fontSizeInput.value, 10);
-            context.font = `bold ${fontSize}px ${fontStyleSelect.value}`; // Ensure bold font
+            context.font = `bold ${fontSize}px ${fontStyleSelect.value}`; 
             context.textAlign = "center";
             context.textBaseline = "middle";
 
