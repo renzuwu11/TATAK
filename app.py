@@ -81,9 +81,21 @@ def create_logo():
     business_name = request.args.get('business_name')
     return render_template('create-logo.html', business_name=business_name)
 
+@app.route('/lm-color')
+def lm_color():
+    return render_template('lm-color.html')
+
+@app.route('/lm-fonts')
+def lm_fonts():
+    return render_template('lm-fonts.html')
+
+@app.route('/generated-logos')
+def generated_logos():
+    return render_template('generated-logos.html')
+
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
-    
+
 if __name__ == '__main__':
     app.run(debug=True)
