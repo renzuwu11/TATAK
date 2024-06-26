@@ -264,8 +264,8 @@
   position: absolute;
 }
 .name-generator-select1 {
-  top: 421px;
-  left: 348px;
+  top: 203px;
+  left: 299px;
   width: 265px;
   height: 26px;
   position: absolute;
@@ -278,8 +278,8 @@
   color: var(--dl-color-gray-700);
 }
 .name-generator-select2 {
-  top: 420px;
-  left: 643px;
+  top: 203px;
+  left: 594px;
   width: 265px;
   height: 26px;
   position: absolute;
@@ -291,6 +291,7 @@
 .name-generator-option16 {
   color: var(--dl-color-gray-700);
 }
+
 @media(max-width: 991px) {
   .name-generator-hero1 {
     flex-direction: column;

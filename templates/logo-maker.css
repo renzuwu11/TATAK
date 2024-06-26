@@ -186,10 +186,14 @@
   font-size: 15px;
   align-self: center;
   font-style: normal;
-  margin-top: 30px;
   text-align: center;
   font-weight: 400;
+  position: absolute;
+  top: 500px; /* Adjust this value if needed */
+  left: 410px;
+  width: 270px;
 }
+
 .logo-maker-navlink1 {
   left: 509px;
   bottom: 19px;

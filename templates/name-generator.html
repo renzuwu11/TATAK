@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Name-Generator - TATAK</title>
-    <meta property="og:title" content="Name-Generator - TATAK">
+    <title>TATAK</title>
+    <meta property="og:title" content="TATAK">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <meta property="twitter:card" content="summary_large_image">
@@ -38,10 +38,59 @@
             background-color: var(--dl-color-gray-white);
         }
     </style>
+    <style>
+
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.5); 
+            backdrop-filter: blur(5px); 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999; /
+        }
+
+        .loader {
+            width: 80px; 
+            height: 80px; 
+            aspect-ratio: 1; 
+            color: #E895AB;
+            background:
+            radial-gradient(circle at 60% 65%, currentColor 62%, #0000 65%) top left,
+            radial-gradient(circle at 40% 65%, currentColor 62%, #0000 65%) top right,
+            linear-gradient(to bottom left, currentColor 42%, #0000 43%) bottom left,
+            linear-gradient(to bottom right, currentColor 42%, #0000 43%) bottom right;
+            background-size: 50% 50%;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+
+        .loader:after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: inherit;
+            opacity: 0.4;
+            animation: l3 1s infinite;
+        }
+
+        @keyframes l3 {
+            to {
+                transform: scale(1.8);
+                opacity: 0;
+            }
+        }
+    </style>
     <link rel="stylesheet" href="https://unpkg.com/animate.css@4.1.1/animate.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" data-tag="font">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@200;300;400;500;600;700;800&amp;display=swap" data-tag="font">
     <link rel="stylesheet" href="https://unpkg.com/@teleporthq/teleport-custom-scripts/dist/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/loading-screen.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='public/tatak-logo-200h.png') }}" type="image/png">
     <style>
         @keyframes fade-in-left {
             0% {
@@ -59,6 +108,9 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 <div>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/name-generator.css') }}">
+    <div class="loader-container" id="loader" style="display: none;">
+        <div class="loader"></div> 
+    </div>
     <div class="name-generator-container">
         <div class="name-generator-header">
             <header data-thq="thq-navbar" class="name-generator-navbar-interactive navbarContainer">
@@ -71,11 +123,6 @@
                     <nav class="name-generator-links">
                         <span class="name-generator-nav52">Name Generator </span>
                     </nav>
-                </div>
-                <div data-thq="thq-burger-menu" class="name-generator-burger-menu">
-                    <svg viewBox="0 0 1024 1024" class="name-generator-icon socialIcons">
-                        <path d="M128 554.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 298.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 810.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667z"></path>
-                    </svg>
                 </div>
             </header>
         </div>
@@ -99,53 +146,70 @@
                     </span>
                     <span class="name-generator-text09">
                         <span>
-                            Enter a business type, a keyword/theme, naming style,
-                            and
+                            Enter a business type, a keyword/theme, naming style, and
                         </span><br>
                         <span>preferred length&nbsp;</span>
                         <span>
                             to generate a variety of business name suggestions.
                         </span>
                     </span>
-                    <form method="POST" action="{{ url_for('generated_names') }}">
-                        <button type="submit" class="name-generator-navlink1 button">Generate Business Name</button>    
-                    <span class="name-generator-text15">Business Type:</span>
-                    <!-- Dynamic dropdown for business types -->
-                    <label for="industry">
-                        <select required="true" class="name-generator-select" id="industry" name="industry">
-                        <option value="Select your business type" class="name-generator-option">Select your business type</option></label>
-                        {% for type in business_types %}
-                            <option value="{{ type }}">{{ type }}</option>
-                        {% endfor %}
-                    </select>
-                    <!-- End of dynamic dropdown -->               
-                    <span class="name-generator-text14">Theme or Keyword:</span>
+                    <form id="nameGeneratorForm" method="POST" action="{{ url_for('generated_names') }}">
+                        <button type="submit" class="name-generator-navlink1 button">Generate Business Name</button>
+                        <span class="name-generator-text15">Business Type:</span>
+                        <label for="industry">
+                            <select required="true" class="name-generator-select" id="industry" name="industry">
+                                <option value="Select your business type" class="name-generator-option">Select your business type</option>
+                                {% for type in business_types %}
+                                    <option value="{{ type }}">{{ type }}</option>
+                                {% endfor %}
+                            </select>
+                        </label>
+                        <span class="name-generator-text14">Theme or Keyword:</span>
                         <input type="text" id="keyword" name="keyword" placeholder="i.e. Food, Technology, Apparel" class="name-generator-textinput input">
-                    <span class="name-generator-text16">Name Style:</span>
-                    <span class="name-generator-text17">Length:</span>
+                        <span class="name-generator-text16">Name Style:</span>
+                        <select id="style" name="style" class="name-generator-select1">
+                            <option value="Select business name type" class="name-generator-option08">Select business name style</option>
+                            {% for style in name_styles %}
+                                <option value="{{ style }}">{{ style }}</option>
+                            {% endfor %}
+                        </select>
+                        <span class="name-generator-text17">Length:</span>
+                        <select id="lengths" name="lengths" class="name-generator-select2">
+                            <option value="Select name length" class="name-generator-option16">Select name length</option>
+                            {% for length in name_lengths %}
+                                <option value="{{ length }}">{{ length }}</option>
+                            {% endfor %}
+                        </select>
+                    </form>
                 </div>
-            </header>
-        </div>
-        <select id="style" name="style" class="name-generator-select1">
-            <option value="Select business name type" class="name-generator-option08">Select business name style</option>
-            <option value="Auto">Auto</option>
-            <option value="Brandable">Brandable</option>
-            <option value="Language">Language</option>
-            <option value="Evocative">Evocative</option>
-            <option value="Alternate Spelling">Alternate Spelling</option>
-            <option value="Dictionary">Dictionary</option>
-            <option value="Rhyme">Rhyme</option>
-        </select>
-        <select id="lengths" name="lengths" class="name-generator-select2">
-            <option value="Select name length" class="name-generator-option16">Select name length</option>
-            <option value="Short">Short</option>
-            <option value="Medium">Medium</option>
-            <option value="Long">Long</option>
-        </select>
-    </div>
-    </form> 
-</div>
+            </div>
+
 <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 <script data-section-id="navbar" src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
+
+<script>
+    document.getElementById('nameGeneratorForm').addEventListener('submit', function(event) {
+        document.getElementById('loader').style.display = 'flex';
+    });
+
+    const keywordInput = document.getElementById('keyword');
+keywordInput.addEventListener('input', function(event) {
+    const input = event.target;
+    const maxLength = 20;
+
+    // Restrict input to alphanumeric characters and hyphens
+    input.value = input.value.replace(/[^a-zA-Z0-9-]/g, '');
+
+    // Check length and set custom validity message
+    if (input.value.length > maxLength) {
+        input.setCustomValidity(`Keyword must be no more than ${maxLength} characters.`);
+        input.reportValidity();
+        input.value = input.value.substring(0, maxLength);
+    } else {
+        input.setCustomValidity('');
+    }
+});
+</script>
+
 </body>
 </html>

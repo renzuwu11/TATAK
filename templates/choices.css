@@ -1,0 +1,25 @@
+.choices-body {
+    display: flex;
+    width: 100%;
+    height: calc(100vh - 92px); /* Adjust for header height */
+}
+
+.choices-button {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.left-button {
+    background-color: #504F4F;
+}
+
+.right-button {
+    background-color: #FFDAE4;
+    color: #504F4F;
+}

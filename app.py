@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify, redirect, url_for
+from flask import Flask, render_template, request, jsonify, redirect, url_for, session
 from pynamelix.utils import get_names
 import json
 
@@ -11,7 +11,9 @@ def index():
 @app.route('/name-generator')
 def name_generator():
     business_types = ['Retail', 'Foodservice', 'E-commerce', 'Health Care', 'Real Estate', 'Educational Services', 'Arts, Entertainment, and Recreation']
-    return render_template('name-generator.html', business_types=business_types)
+    name_styles = ['Auto', 'Brandable', 'Language', 'Evocative', 'Alternate Spelling', 'Dictionary', 'Rhyme']
+    name_lengths = ['Short', 'Medium', 'Long']
+    return render_template('name-generator.html', business_types=business_types, name_styles=name_styles, name_lengths=name_lengths)
 
 @app.route('/generated-names', methods=['POST'])
 def generated_names():
@@ -40,21 +42,13 @@ def generated_names_page():
     # Render the template and pass the generated names to it
     return render_template('generated-names.html', generated_names=generated_names)
 
-@app.route('/logo-maker')
+@app.route('/logo-maker', methods=['GET', 'POST'])
 def logo_maker():
+    if request.method == 'POST':
+        business_name = request.form['business_name']
+        # Redirect directly to create-logo with business_name as query parameter
+        return redirect(url_for('create_logo', business_name=business_name))
     return render_template('logo-maker.html')
-
-@app.route('/lm-color')
-def lm_color():
-    return render_template('lm-color.html')
-
-@app.route('/lm-fonts')
-def lm_fonts():
-    return render_template('lm-fonts.html')
-
-@app.route('/generated-logos')
-def generated_logos():
-    return render_template('generated-logos.html')
 
 @app.route('/manual')
 def manual():
@@ -64,5 +58,32 @@ def manual():
 def creator():
     return render_template('creator.html')
 
+@app.route('/choices')
+def choices():
+    return render_template('choices.html')
+
+@app.route('/get-fonts')
+def get_fonts():
+    with open('/src/assets/font-list.json') as f:
+        fonts = json.load(f)
+    return jsonify(fonts)
+
+@app.route('/generated-logo')
+def generated_logo():
+    business_name = request.args.get('business_name')
+    return render_template('generated-logo.html', business_name=business_name)
+
+@app.route('/create-logo', methods=['GET', 'POST'])
+def create_logo():
+    if request.method == 'POST':
+        business_name = request.form['business_name']
+        return redirect(url_for('generated_logo', business_name=business_name))
+    business_name = request.args.get('business_name')
+    return render_template('create-logo.html', business_name=business_name)
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
+    
 if __name__ == '__main__':
     app.run(debug=True)

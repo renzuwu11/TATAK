@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>TATAK</title>
+    <meta property="og:title" content="TATAK" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <style data-tag="reset-style-sheet">
+        html {
+            line-height: 1.15;
+        }
+        body {
+            margin: 0;
+        }
+        * {
+            box-sizing: border-box;
+            border-width: 0;
+            border-style: solid;
+        }
+        p, li, ul, pre, div, h1, h2, h3, h4, h5, h6, figure, blockquote, figcaption {
+            margin: 0;
+            padding: 0;
+        }
+        button {
+            background-color: transparent;
+        }
+        button, input, optgroup, select, textarea {  
+            font-family: inherit;  
+            font-size: 100%;  
+            line-height: 1.15;  
+            margin: 0;
+        }
+        button, select {  
+            text-transform: none;
+        }
+        button, [type="button"], [type="reset"], [type="submit"] {  
+            -webkit-appearance: button;
+        }
+        button::-moz-focus-inner, [type="button"]::-moz-focus-inner, [type="reset"]::-moz-focus-inner, [type="submit"]::-moz-focus-inner {  
+            border-style: none;  
+            padding: 0;
+        }
+        button:-moz-focus, [type="button"]:-moz-focus, [type="reset"]:-moz-focus, [type="submit"]:-moz-focus {  
+            outline: 1px dotted ButtonText;
+        }
+        a {  
+            color: inherit;  
+            text-decoration: inherit;
+        }
+        input {  
+            padding: 2px 4px;
+        }
+        img {  
+            display: block;
+        }
+        html { 
+            scroll-behavior: smooth;  
+        }
+    </style>
+    <style data-tag="default-style-sheet">
+        html {
+            font-family: Inter;
+            font-size: 16px;
+        }
+        body {
+            font-weight: 400;
+            font-style: normal;
+            text-decoration: none;
+            text-transform: none;
+            letter-spacing: normal;
+            line-height: 1.15;
+            color: var(--dl-color-gray-black);
+            background-color: var(--dl-color-gray-white);
+        }
+    </style>
+    <link rel="stylesheet" href="https://unpkg.com/animate.css@4.1.1/animate.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" data-tag="font"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@200;300;400;500;600;700;800&amp;display=swap" data-tag="font"/>
+    <link rel="stylesheet" href="https://unpkg.com/@teleporthq/teleport-custom-scripts/dist/style.css"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/create-logo.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='public/tatak-logo-200h.png') }}" type="image/png">
+</head>
+<body>
+    <div>
+        <div class="logo-maker-header">
+            <header data-thq="thq-navbar" class="logo-maker-navbar-interactive navbarContainer">
+                <a href="{{ url_for('index') }}">
+                    <img alt="image" src="static/public/tatak-logo-200h.png" class="logo-maker-image" />
+                </a>
+                <nav class="logo-maker-links">
+                    <span class="logo-maker-nav52">Logo Maker</span>
+                </nav>
+            </header>
+        </div>
+        <div class="logo-maker-body">
+            <div class="form-container">
+                <label for="business-name">Business Name:</label>
+                <input type="text" id="business-name" name="business_name" placeholder="Enter your Business Name...">
+
+                <label for="logo-size">Logo Size:</label>
+                <select id="logo-size" name="logo_size">
+                    <!-- Square -->
+                    <option value="1080x1080">1080 x 1080 (Square)</option>
+                    <option value="720x720">720 x 720 (Square)</option>
+                    <option value="480x480">480 x 480 (Square)</option>
+                    <!-- Landscape -->
+                    <option value="1920x1080">1920 x 1080 (16:9 Landscape)</option>
+                    <option value="1280x720">1280 x 720 (16:9 Landscape)</option>
+                    <option value="854x480">854 x 480 (16:9 Landscape)</option>
+                    <!-- Portrait -->
+                    <option value="1080x1920">1080 x 1920 (9:16 Portrait)</option>
+                    <option value="720x1280">720 x 1280 (9:16 Portrait)</option>
+                    <option value="480x854">480 x 854 (9:16 Portrait)</option>
+                    <!-- Other ratios -->
+                    <option value="1200x630">1200 x 630 (1.91:1 - Facebook)</option>
+                    <option value="1080x1350">1080 x 1350 (4:5 - Instagram Portrait)</option>
+                    <option value="1080x566">1080 x 566 (1.91:1 - Twitter)</option>
+                </select>                
+
+                <label for="font-style">Font Style:</label>
+                <select id="font-style" name="font_style">
+                    <!-- Options will be dynamically populated -->
+                </select>
+
+                <label for="font-size">Font Size:</label>
+                <div style="display: flex; align-items: center; margin-bottom: 1px;">
+                    <input type="number" id="font-size" name="font_size" value="48" min="10" style="width: 45%;">
+                    <span id="font-size-error" style="color: red; display: none; margin-left: 10px;">Minimum size is 10</span>
+                </div>
+
+                <label for="text-color">Text Color Gradient:</label>
+                <div class="color-input-wrapper">
+                    <input type="color" id="text-color-start" name="text_color_start" value="#000000">
+                    <div class="arrow" style="margin-bottom: 5%;">&#x2192;</div>
+                    <input type="color" id="text-color-end" name="text_color_end" value="#000000">
+                    <div id="text-angle-input" class="angle-input" tabindex="0">
+                        <input type="number" id="logo-grad-angle" tabindex="-1" readonly value="45">
+                        <span class="pivot" style="transform: rotate(45deg);"></span>
+                    </div>
+                </div>                
+
+                <label for="bg-color">Background Color Gradient:</label>
+                <div class="color-input-wrapper">
+                    <input type="color" id="bg-color-start" name="bg_color_start" value="#F5F5F5">
+                    <div class="arrow" style="margin-bottom: 5%;">&#x2192;</div>
+                    <input type="color" id="bg-color-end" name="bg_color_end" value="#F5F5F5">
+                    <div id="bg-angle-input" class="angle-input">
+                        <input type="number" id="logo-grad-angle" tabindex="-1" readonly value="45">
+                        <span class="pivot" style="transform: rotate(45deg);"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="separator"></div>
+            <div class="logo-preview-container">
+                <div class="logo-preview" id="logo-preview">
+                    <h1 id="logo-text">Your Business Name</h1>
+                </div>
+                <button id="download-logo">Download</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const logoText = document.getElementById('logo-text');
+        const businessNameInput = document.getElementById('business-name');
+        const logoSizeSelect = document.getElementById('logo-size');
+        const fontStyleSelect = document.getElementById('font-style');
+        const fontSizeInput = document.getElementById('font-size');
+        const fontSizeError = document.getElementById('font-size-error');
+        const textColorStartInput = document.getElementById('text-color-start');
+        const textColorEndInput = document.getElementById('text-color-end');
+        const bgColorStartInput = document.getElementById('bg-color-start');
+        const bgColorEndInput = document.getElementById('bg-color-end');
+        const downloadButton = document.getElementById('download-logo');
+        const logoPreviewContainer = document.querySelector('.logo-preview-container');
+        const textAngleInput = document.getElementById('text-angle-input');
+        const bgAngleInput = document.getElementById('bg-angle-input');
+
+        async function fetchFonts() {
+            try {
+                const response = await fetch('static/assets/font-list.json');
+                const fontData = await response.json();
+                populateFontStyles(fontData.items);
+            } catch (error) {
+                console.error('Error fetching font list:', error);
+            }
+        }
+
+        function populateFontStyles(fonts) {
+            fontStyleSelect.innerHTML = '';
+            fonts.forEach(font => {
+                const option = document.createElement('option');
+                option.value = font.family;
+                option.textContent = font.family;
+                fontStyleSelect.appendChild(option);
+                loadFont(font.family, font.files.regular);
+            });
+        }
+
+        function loadFont(fontFamily, fontUrl) {
+            const font = new FontFace(fontFamily, `url(${fontUrl})`);
+            font.load().then(loadedFont => {
+                document.fonts.add(loadedFont);
+                // Re-render the canvas to ensure the font is applied
+                updateLogoText();
+                updateLogoSize();
+                updateFontStyle();
+                updateFontSize();
+                updateTextColor();
+                updateBgColor();
+            }).catch(error => {
+                console.error(`Error loading font ${fontFamily}:`, error);
+            });
+        }
+
+        function updateLogoText() {
+    const maxLength = 15;
+    const businessNameInput = document.getElementById('business-name');
+    const businessName = businessNameInput.value;
+
+    if (businessName.length > maxLength) {
+        businessNameInput.setCustomValidity(`Business name must be no more than ${maxLength} characters.`);
+        businessNameInput.reportValidity();
+        businessNameInput.value = businessName.substring(0, maxLength);
+    } else {
+        businessNameInput.setCustomValidity('');
+    }
+
+    const logoText = document.getElementById('logo-text');
+    logoText.textContent = businessName || "Your Business Name";
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    const businessNameInput = document.getElementById('business-name');
+    businessNameInput.addEventListener('input', updateLogoText);
+});
+
+        function updateLogoSize() {
+            const [width, height] = logoSizeSelect.value.split('x');
+            const logoPreview = document.getElementById('logo-preview');
+            logoPreview.style.width = `${width}px`;
+            logoPreview.style.height = `${height}px`;
+        }
+
+        function updateFontStyle() {
+            logoText.style.fontFamily = fontStyleSelect.value;
+        }
+
+        function updateFontSize() {
+            let fontSize = parseInt(fontSizeInput.value, 10);
+            let errorMessage = '';
+            
+            if (fontSize < 20) {
+                errorMessage = 'Minimum size is 20';
+                fontSizeInput.value = 20;
+                fontSize = 20;
+            } else if (fontSize > 120) {
+                errorMessage = 'Maximum size is 120';
+                fontSizeInput.value = 120;
+                fontSize = 120;
+            }
+            
+            if (errorMessage) {
+                fontSizeError.textContent = errorMessage;
+                fontSizeError.style.display = 'inline';
+                setTimeout(() => {
+                    fontSizeError.style.display = 'none';
+                }, 5000);
+            } else {
+                fontSizeError.style.display = 'none';
+            }
+
+            logoText.style.fontSize = `${fontSize}px`;
+        }
+
+        function updateTextColor() {
+            const colorStart = textColorStartInput.value;
+            const colorEnd = textColorEndInput.value;
+            const angle = parseFloat(textAngleInput.querySelector('input').value);
+            logoText.style.background = `linear-gradient(${angle}deg, ${colorStart}, ${colorEnd})`;
+            logoText.style.webkitBackgroundClip = 'text';
+            logoText.style.color = 'transparent';
+        }
+
+        function updateBgColor() {
+            const bgColorStart = bgColorStartInput.value;
+            const bgColorEnd = bgColorEndInput.value;
+            const angle = parseFloat(bgAngleInput.querySelector('input').value);
+            document.getElementById('logo-preview').style.background = `linear-gradient(${angle}deg, ${bgColorStart}, ${bgColorEnd})`;
+        }
+
+        function downloadLogo() {
+            const canvas = document.createElement('canvas');
+            const context = canvas.getContext('2d');
+            const logoPreview = document.getElementById('logo-preview');
+
+            const [width, height] = logoSizeSelect.value.split('x').map(Number);
+
+            canvas.width = width;
+            canvas.height = height;
+
+            // Draw background
+            const bgColorStart = bgColorStartInput.value;
+            const bgColorEnd = bgColorEndInput.value;
+            const bgAngle = parseFloat(bgAngleInput.querySelector('input').value);
+
+            // Adjust the calculation to match the preview
+            const bgGradient = context.createLinearGradient(
+                width / 2 * (1 - Math.cos((bgAngle - 90) * Math.PI / 180)),
+                height / 2 * (1 - Math.sin((bgAngle - 90) * Math.PI / 180)),
+                width / 2 * (1 + Math.cos((bgAngle - 90) * Math.PI / 180)),
+                height / 2 * (1 + Math.sin((bgAngle - 90) * Math.PI / 180))
+            );
+            bgGradient.addColorStop(0, bgColorStart);
+            bgGradient.addColorStop(1, bgColorEnd);
+            context.fillStyle = bgGradient;
+            context.fillRect(0, 0, width, height);
+
+            // Draw text
+            const fontSize = parseInt(fontSizeInput.value, 10);
+            context.font = `bold ${fontSize}px ${fontStyleSelect.value}`; // Ensure bold font
+            context.textAlign = "center";
+            context.textBaseline = "middle";
+
+            const textColorStart = textColorStartInput.value;
+            const textColorEnd = textColorEndInput.value;
+            const textAngle = parseFloat(textAngleInput.querySelector('input').value);
+
+            // Adjust the calculation to match the preview
+            const textGradient = context.createLinearGradient(
+                width / 2 * (1 - Math.cos((textAngle - 90) * Math.PI / 180)),
+                height / 2 * (1 - Math.sin((textAngle - 90) * Math.PI / 180)),
+                width / 2 * (1 + Math.cos((textAngle - 90) * Math.PI / 180)),
+                height / 2 * (1 + Math.sin((textAngle - 90) * Math.PI / 180))
+            );
+            textGradient.addColorStop(0, textColorStart);
+            textGradient.addColorStop(1, textColorEnd);
+            context.fillStyle = textGradient;
+
+            const text = businessNameInput.value || "Your Business Name";
+            context.fillText(text, width / 2, height / 2);
+
+            // Trigger download with dynamic filename
+            const link = document.createElement('a');
+            link.download = `${text}.png`; 
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+
+
+
+        function updateAngle(element, angle) {
+            const pivot = element.querySelector('.pivot');
+            pivot.style.transform = `rotate(${angle}deg)`;
+            element.querySelector('input').value = angle;
+        }
+
+        function handleAngleInput(event) {
+            event.preventDefault();
+            const element = event.currentTarget;
+            const rect = element.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            const moveHandler = (moveEvent) => {
+                const angle = Math.atan2(moveEvent.clientY - centerY, moveEvent.clientX - centerX) * (180 / Math.PI) + 90;
+                updateAngle(element, Math.round(angle));
+                if (element.id === 'text-angle-input') {
+                    updateTextColor();
+                } else {
+                    updateBgColor();
+                }
+            };
+
+            const stopHandler = () => {
+                document.removeEventListener('mousemove', moveHandler);
+                document.removeEventListener('mouseup', stopHandler);
+            };
+
+            document.addEventListener('mousemove', moveHandler);
+            document.addEventListener('mouseup', stopHandler);
+        }
+
+        fetchFonts();
+        businessNameInput.addEventListener('input', updateLogoText);
+        logoSizeSelect.addEventListener('change', updateLogoSize);
+        fontStyleSelect.addEventListener('change', updateFontStyle);
+        fontSizeInput.addEventListener('input', updateFontSize);
+        textColorStartInput.addEventListener('input', updateTextColor);
+        textColorEndInput.addEventListener('input', updateTextColor);
+        bgColorStartInput.addEventListener('input', updateBgColor);
+        bgColorEndInput.addEventListener('input', updateBgColor);
+        downloadButton.addEventListener('click', downloadLogo);
+        textAngleInput.addEventListener('mousedown', handleAngleInput);
+        bgAngleInput.addEventListener('mousedown', handleAngleInput)
+    });
+    </script>
+</body>
+</html>

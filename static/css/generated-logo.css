@@ -1,0 +1,282 @@
+.logo-maker-container {
+  width: 100%;
+  display: flex;
+  overflow: auto;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+}
+
+.logo-maker-header {
+  width: 100%;
+  display: flex;
+  z-index: 100;
+  position: fixed;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--dl-color-gray-white);
+}
+
+.logo-maker-navbar-interactive {
+  height: 92px;
+  align-self: stretch;
+  transition: 0.3s;
+  border-color: var(--dl-color-gray-black);
+  border-width: 1px;
+  flex-direction: row;
+  background-color: #ffffff;
+}
+
+.logo-maker-navbar-interactive:focus {
+  position: fixed;
+}
+
+.logo-maker-container1 {
+  flex: 0 0 auto;
+  width: 200px;
+  height: auto;
+  display: flex;
+  align-items: space-between;
+  flex-direction: column;
+}
+
+.logo-maker-navlink {
+  display: contents;
+}
+
+.logo-maker-image {
+  width: 80px;
+  height: 58px;
+  align-self: flex-start;
+  object-fit: cover;
+  text-decoration: none;
+}
+
+.logo-maker-desktop-menu {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo-maker-links {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.logo-maker-nav52 {
+  color: rgb(232, 149, 171);
+  margin-left: var(--dl-space-space-unit);
+  margin-right: var(--dl-space-space-unit);
+}
+
+.logo-maker-content {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 120px; /* Adjust margin-top to avoid overlap with the header */
+}
+
+.logo-maker-sidebar {
+  flex: 0 0 300px;
+  padding: 20px;
+  background-color: #000000;
+  border-right: 1px solid #ddd;
+}
+
+.logo-maker-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  width: 50%; /* Adjust width if necessary */
+}
+
+.logo-placeholder {
+  width: 100%;
+  height: 400px;
+  background-color: #e0e0e0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px dashed #bbb;
+  color: #777;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.logo-maker-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%; /* Ensure it takes up the full width of the parent */
+}
+
+.logo-maker-row {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%; /* Ensure it takes up the full width of the parent */
+}
+
+.logo-maker-row.same-line {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-maker-dropdown {
+  margin-top: 10px; /* Add margin for spacing */
+  width: auto; /* Adjust width if necessary */
+  border: 1px solid black; /* Add black border */
+  padding: 5px; /* Add padding for better appearance */
+}
+
+.logo-maker-download-button {
+  font-size: 14px;
+  transition: 0.3s;
+  border-width: 0px;
+  text-decoration: none;
+  background-color: rgb(255, 218, 228);
+  padding: 10px 20px; /* Add padding for better appearance */
+  cursor: pointer; /* Change cursor to pointer */
+  border-radius: 5px; /* Add border-radius for rounded corners */
+  margin-top: 10px; /* Add margin for spacing */
+  margin-left: 10px; /* Space between the dropdown and the button */
+}
+
+.logo-maker-download-button:hover {
+  color: var(--dl-color-gray-white);
+  background-color: #E895AB;
+}
+
+.logo-preview-container {
+  flex: 0 0 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow: hidden; /* Remove vertical scroll */
+}
+
+.logo-preview {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  max-width: 100%; /* Ensure it doesn't overflow horizontally */
+  max-height: calc(100vh - 160px); /* Ensure it fits within the viewport */
+}
+
+#opacity-range {
+  width: 70%;
+  margin-bottom: 10px;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 8px;
+  background: #FFDAE4; /* Pink color matching the download button */
+  border-radius: 5px;
+  outline: none;
+  transition: background 0.3s;
+}
+
+#opacity-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #E895AB; /* Darker pink for the slider thumb */
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background 0.3s;
+}
+
+#opacity-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: #E895AB; /* Darker pink for the slider thumb */
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background 0.3s;
+}
+
+#opacity-range::-ms-thumb {
+  width: 20px;
+  height: 20px;
+  background: #E895AB; /* Darker pink for the slider thumb */
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background 0.3s;
+}
+
+.separator {
+  width: 1px;
+  height: 500px;
+  background-color: rgba(0, 0, 0, 0.1); /* Slightly transparent separator */
+  margin: 0 20px; /* Adjust margin for centering */
+}
+
+@media(max-width: 991px) {
+  .logo-maker-hero1 {
+    flex-direction: column;
+  }
+}
+
+@media(max-width: 767px) {
+  .logo-maker-navbar-interactive {
+    padding-left: var(--dl-space-space-twounits);
+    padding-right: var(--dl-space-space-twounits);
+  }
+  .logo-maker-desktop-menu {
+    display: none;
+  }
+  .logo-maker-burger-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .logo-maker-nav12 {
+    margin-bottom: var(--dl-space-space-unit);
+  }
+  .logo-maker-nav22 {
+    margin-bottom: var(--dl-space-space-unit);
+  }
+  .logo-maker-nav32 {
+    margin-bottom: var(--dl-space-space-unit);
+  }
+  .logo-maker-nav42 {
+    margin-bottom: var(--dl-space-space-unit);
+  }
+  .logo-maker-nav521 {
+    margin-bottom: var(--dl-space-space-unit);
+  }
+  .logo-maker-hero1 {
+    padding-left: var(--dl-space-space-twounits);
+    padding-right: var(--dl-space-space-twounits);
+  }
+}
+
+@media(max-width: 479px) {
+  .logo-maker-navbar-interactive {
+    padding: var(--dl-space-space-unit);
+  }
+  .logo-maker-mobile-menu1 {
+    padding: 16px;
+  }
+  .logo-maker-hero1 {
+    padding-top: var(--dl-space-space-twounits);
+    padding-left: var(--dl-space-space-unit);
+    padding-right: var(--dl-space-space-unit);
+    padding-bottom: var(--dl-space-space-twounits);
+  }
+}

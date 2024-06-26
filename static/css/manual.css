@@ -1,12 +1,3 @@
-.manual-container {
-  width: 100%;
-  display: flex;
-  overflow: auto;
-  min-height: 100vh;
-  align-items: center;
-  flex-direction: column;
-  justify-content: flex-start;
-}
 .manual-navbar-interactive {
   height: 92px;
   align-self: stretch;
@@ -152,8 +143,8 @@
   justify-content: center;
 }
 .manual-text {
-  top: 45px;
-  left: 517px;
+  top: 39px;
+  left: 497px;
   color: var(--dl-color-gray-black);
   position: absolute;
   font-size: 30px;
@@ -162,8 +153,8 @@
   font-weight: 700;
 }
 .manual-text01 {
-  top: 91px;
-  left: 457px;
+  top: 85px;
+  left: 440px;
   position: absolute;
   font-size: 15px;
   align-self: center;
@@ -172,32 +163,21 @@
   font-weight: 400;
 }
 .manual-text05 {
-  top: 445px;
-  left: 165px;
-  color: var(--dl-color-gray-black);
+  top: 1018px;
+  left: 153px;
   position: absolute;
-  font-size: 20px;
+  font-size: 12px;
   align-self: center;
-  margin-top: 40px;
+  font-style: normal;
+  margin-top: 10px;
   text-align: center;
-  font-weight: 700;
-  margin-left: 15px;
-}
-.manual-text09 {
-  top: 446px;
-  left: 568px;
-  color: var(--dl-color-gray-black);
-  position: absolute;
-  font-size: 20px;
-  align-self: center;
-  margin-top: 40px;
-  text-align: center;
-  font-weight: 700;
-  margin-left: 15px;
+  font-weight: 400;
+  margin-left: 30px;
 }
 .manual-text14 {
-  top: 537px;
-  left: 117px;
+  left: 474px;
+  color: var(--dl-color-gray-white);
+  bottom: -11px;
   position: absolute;
   font-size: 12px;
   align-self: center;
@@ -206,85 +186,109 @@
   text-align: center;
   font-weight: 400;
   margin-left: 30px;
-}
-.manual-text22 {
-  top: 543px;
-  left: 516px;
-  position: absolute;
-  font-size: 12px;
-  align-self: center;
-  font-style: normal;
-  margin-top: 10px;
-  text-align: center;
-  font-weight: 400;
-  margin-left: 30px;
-}
-.manual-container3 {
-  flex: 0 0 auto;
-  width: auto;
-  height: auto;
-  display: flex;
-  position: relative;
-  align-items: flex-start;
-  justify-content: center;
 }
 .manual-image1 {
-  top: -46px;
-  left: -599px;
-  width: 326px;
-  height: 283px;
+  top: 901px;
+  right: 47px;
+  width: 559px;
+  bottom: 100px;
+  height: 282px;
   position: absolute;
   object-fit: cover;
-  margin-left: 90px;
 }
-.manual-text27 {
-  top: 393px;
-  right: 117px;
-  position: absolute;
-  font-size: 12px;
-  align-self: center;
-  font-style: normal;
-  margin-top: 0px;
-  text-align: center;
-  font-weight: 400;
-  margin-left: 0px;
-}
-.manual-text32 {
-  top: 351px;
+.manual-text23 {
+  top: 614px;
+  left: 798px;
   color: var(--dl-color-gray-black);
-  right: 89px;
   position: absolute;
   font-size: 20px;
   align-self: center;
-  margin-top: 0px;
+  margin-top: 40px;
   text-align: center;
   font-weight: 700;
-  margin-left: 0px;
+  margin-left: 15px;
+}
+.manual-text26 {
+  top: 946px;
+  left: 212px;
+  color: var(--dl-color-gray-black);
+  position: absolute;
+  font-size: 20px;
+  align-self: center;
+  margin-top: 40px;
+  text-align: center;
+  font-weight: 700;
+  margin-left: 15px;
 }
 .manual-image2 {
-  top: 223px;
-  left: 473px;
-  width: 346px;
-  height: 259px;
+  top: 563px;
+  left: 47px;
+  width: 559px;
+  height: 282px;
   position: absolute;
   object-fit: cover;
 }
+.manual-text29 {
+  top: 679px;
+  left: 760px;
+  position: absolute;
+  font-size: 12px;
+  align-self: center;
+  font-style: normal;
+  margin-top: 10px;
+  text-align: center;
+  font-weight: 400;
+  margin-left: 30px;
+}
 .manual-image3 {
-  top: 287px;
-  right: 51px;
-  width: 160px;
-  height: 95px;
+  top: 250px;
+  right: 70px;
+  width: 400px;
+  height: 220px;
   position: absolute;
   object-fit: cover;
 }
 .manual-image4 {
-  top: 354px;
-  left: 831px;
-  width: 120px;
-  height: 58px;
+  top: 250px;
+  left: 70px;
+  width: 400px;
+  height: 220px;
   position: absolute;
   object-fit: cover;
 }
+.manual-text36 {
+  top: 264px;
+  left: 530px;
+  color: var(--dl-color-gray-black);
+  position: absolute;
+  font-size: 20px;
+  align-self: center;
+  margin-top: 40px;
+  text-align: center;
+  font-weight: 700;
+  margin-left: 15px;
+}
+.manual-text39 {
+  top: 331px;
+  left: 496px;
+  position: absolute;
+  font-size: 12px;
+  align-self: center;
+  font-style: normal;
+  margin-top: 10px;
+  text-align: center;
+  font-weight: 400;
+  margin-left: 30px;
+}
+
+.manual-image1, .manual-image2, .manual-image3, .manual-image4 {
+  transition: transform 0.3s ease-in-out;
+}
+
+.manual-image1:hover, .manual-image2:hover, .manual-image3:hover, .manual-image4:hover {
+  transform: scale(1.1);
+}
+
 @media(max-width: 767px) {
   .manual-navbar-interactive {
     padding-left: var(--dl-space-space-twounits);

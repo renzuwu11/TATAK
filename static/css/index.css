@@ -374,3 +374,9 @@
     margin-bottom: var(--dl-space-space-oneandhalfunits);
   }
 }
+#intro-animation {
+  width: 10%; /* Adjust the width as needed */
+  display: block;
+  margin: 0 auto; /* Center the video horizontally */
+  margin-top: 35vh;
+}

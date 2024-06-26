@@ -153,153 +153,129 @@
   height: auto;
   display: flex;
   margin-top: 96px;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
+  text-align: center;
 }
 .logo-maker-hero1 {
   width: 1143px;
-  height: 537px;
+  height: auto;
   padding-top: 11px;
   padding-bottom: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
 }
 .logo-maker-text {
   color: var(--dl-color-gray-black);
   font-size: 30px;
-  align-self: center;
-  margin-top: 30px;
-  text-align: center;
+  margin-top: 70px;
   font-weight: 700;
-  margin-left: 45px;
+  text-align: center;
 }
 .logo-maker-container2 {
   flex: 0 0 auto;
-  width: 1102px;
-  height: 332px;
+  width: 100%;
+  max-width: 600px;
   display: flex;
   position: relative;
-  align-self: flex-start;
-  align-items: flex-start;
+  align-items: center;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
 }
 .logo-maker-text07 {
   font-size: 15px;
   align-self: center;
   font-style: normal;
   margin-top: 30px;
+  margin-right: 5px;
   text-align: center;
   font-weight: 400;
+  margin-bottom: 20px;
 }
 .logo-maker-navlink1 {
-  left: 509px;
-  bottom: 19px;
-  position: absolute;
+  margin-top: 20px;
   font-size: 14px;
   transition: 0.3s;
   border-width: 0px;
   text-decoration: none;
   background-color: rgb(255, 218, 228);
+  padding: 10px 20px;
+  border-radius: 5px;
 }
 .logo-maker-navlink1:hover {
   color: var(--dl-color-gray-white);
   background-color: #E895AB;
 }
 .logo-maker-text08 {
-  top: 71px;
-  left: 409px;
-  position: absolute;
+  margin-top: 10px;
+  font-size: 16px;
+  text-align: center;
 }
 .logo-maker-textinput {
-  top: 93px;
-  left: 410px;
-  width: 270px;
+  width: 100%;
+  max-width: 360px;
   height: 27px;
-  position: absolute;
+  margin-top: 10px;
   border-style: solid;
   padding-left: var(--dl-space-space-halfunit);
-}
-.logo-maker-text09 {
-  top: 204px;
-  left: 410px;
-  position: absolute;
-}
-.logo-maker-textinput1 {
-  top: 161px;
-  left: 411px;
-  width: 270px;
-  height: 27px;
-  position: absolute;
-  border-style: solid;
-  padding-left: var(--dl-space-space-halfunit);
-}
-.logo-maker-select {
-  top: 225px;
-  left: 411px;
-  width: 270px;
-  height: 26px;
-  position: absolute;
-  border-color: var(--dl-color-gray-black);
-  border-style: solid;
+  text-align: center;
+  border-radius: 5px;
   border-width: 1px;
-  border-radius: var(--dl-radius-radius-radius4);
-}
-.logo-maker-option {
-  color: var(--dl-color-gray-700);
-}
-.logo-maker-text10 {
-  top: 139px;
-  left: 409px;
-  position: absolute;
 }
 @media(max-width: 991px) {
   .logo-maker-hero1 {
-    flex-direction: column;
+      flex-direction: column;
+      width: 100%;
+      padding: 0 20px;
   }
 }
 @media(max-width: 767px) {
   .logo-maker-navbar-interactive {
-    padding-left: var(--dl-space-space-twounits);
-    padding-right: var(--dl-space-space-twounits);
+      padding-left: var(--dl-space-space-twounits);
+      padding-right: var(--dl-space-space-twounits);
   }
   .logo-maker-desktop-menu {
-    display: none;
+      display: none;
   }
   .logo-maker-burger-menu {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
   }
   .logo-maker-nav12 {
-    margin-bottom: var(--dl-space-space-unit);
+      margin-bottom: var(--dl-space-space-unit);
   }
   .logo-maker-nav22 {
-    margin-bottom: var(--dl-space-space-unit);
+      margin-bottom: var(--dl-space-space-unit);
   }
   .logo-maker-nav32 {
-    margin-bottom: var(--dl-space-space-unit);
+      margin-bottom: var(--dl-space-space-unit);
   }
   .logo-maker-nav42 {
-    margin-bottom: var(--dl-space-space-unit);
+      margin-bottom: var(--dl-space-space-unit);
   }
   .logo-maker-nav521 {
-    margin-bottom: var(--dl-space-space-unit);
+      margin-bottom: var(--dl-space-space-unit);
   }
   .logo-maker-hero1 {
-    padding-left: var(--dl-space-space-twounits);
-    padding-right: var(--dl-space-space-twounits);
+      padding-left: var(--dl-space-space-twounits);
+      padding-right: var(--dl-space-space-twounits);
   }
 }
 @media(max-width: 479px) {
   .logo-maker-navbar-interactive {
-    padding: var(--dl-space-space-unit);
+      padding: var(--dl-space-space-unit);
   }
   .logo-maker-mobile-menu1 {
-    padding: 16px;
+      padding: 16px;
   }
   .logo-maker-hero1 {
-    padding-top: var(--dl-space-space-twounits);
-    padding-left: var(--dl-space-space-unit);
-    padding-right: var(--dl-space-space-unit);
-    padding-bottom: var(--dl-space-space-twounits);
+      padding-top: var(--dl-space-space-twounits);
+      padding-left: var(--dl-space-space-unit);
+      padding-right: var(--dl-space-space-unit);
+      padding-bottom: var(--dl-space-space-twounits);
   }
 }

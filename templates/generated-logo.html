@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>TATAK</title>
+    <meta property="og:title" content="TATAK" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <style data-tag="reset-style-sheet">
+        html {
+            line-height: 1.15;
+        }
+        body {
+            margin: 0;
+        }
+        * {
+            box-sizing: border-box;
+            border-width: 0;
+            border-style: solid;
+        }
+        p, li, ul, pre, div, h1, h2, h3, h4, h5, h6, figure, blockquote, figcaption {
+            margin: 0;
+            padding: 0;
+        }
+        button {
+            background-color: transparent;
+        }
+        button, input, optgroup, select, textarea {  
+            font-family: inherit;  
+            font-size: 100%;  
+            line-height: 1.15;  
+            margin: 0;
+        }
+        button, select {  
+            text-transform: none;
+        }
+        button, [type="button"], [type="reset"], [type="submit"] {  
+            -webkit-appearance: button;
+        }
+        button::-moz-focus-inner, [type="button"]::-moz-focus-inner, [type="reset"]::-moz-focus-inner, [type="submit"]::-moz-focus-inner {  
+            border-style: none;  
+            padding: 0;
+        }
+        button:-moz-focus, [type="button"]:-moz-focus, [type="reset"], [type="submit"]:-moz-focus {  
+            outline: 1px dotted ButtonText;
+        }
+        a {  
+            color: inherit;  
+            text-decoration: inherit;
+        }
+        input {  
+            padding: 2px 4px;
+        }
+        img {  
+            display: block;
+        }
+        html { 
+            scroll-behavior: smooth;  
+        }
+    </style>
+    <style data-tag="default-style-sheet">
+        html {
+            font-family: Inter;
+            font-size: 16px;
+        }
+        body {
+            font-weight: 400;
+            font-style: normal;
+            text-decoration: none;
+            text-transform: none;
+            letter-spacing: normal;
+            line-height: 1.15;
+            color: var(--dl-color-gray-black);
+            background-color: var(--dl-color-gray-white);
+        }
+    </style>
+    <link rel="stylesheet" href="https://unpkg.com/animate.css@4.1.1/animate.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" data-tag="font"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@200;300;400;500;600;700;800&amp;display=swap" data-tag="font"/>
+    <link rel="stylesheet" href="https://unpkg.com/@teleporthq/teleport-custom-scripts/dist/style.css"/>
+    <link rel="icon" href="{{ url_for('static', filename='public/tatak-logo-200h.png') }}" type="image/png">
+    <style>
+        @keyframes fade-in-left {
+            0% {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <div>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/generated-logo.css') }}">
+        <div class="logo-maker-container">
+            <div class="logo-maker-header">
+                <header data-thq="thq-navbar" class="logo-maker-navbar-interactive navbarContainer">
+                    <div class="logo-maker-container1">
+                        <a href="{{ url_for('index') }}" class="logo-maker-navlink">
+                            <img alt="image" src="static/public/tatak-logo-200h.png" class="logo-maker-image" />
+                        </a>
+                    </div>
+                    <div data-thq="thq-navbar-nav" class="logo-maker-desktop-menu">
+                        <nav class="logo-maker-links">
+                            <span class="logo-maker-nav52">Logo Maker</span>
+                        </nav>
+                    </div>
+                    <div data-thq="thq-mobile-menu" class="logo-maker-mobile-menu1 mobileMenu">
+                        <div class="logo-maker-nav">
+                            <div class="logo-maker-top"></div>
+                        </div>
+                    </div>
+                </header>
+            </div>
+            <div class="logo-maker-content">
+                <div class="logo-preview-container">
+                    <div class="logo-preview" id="logo-placeholder">
+                        <!-- The generated logo will be placed here -->
+                    </div>
+                </div>
+                <div class="separator"></div>
+                <div class="logo-maker-main">
+                    <div class="logo-maker-info">
+                        <div class="logo-maker-row">
+                            <span>Business Name:</span>
+                            <strong id="business-name">{{ business_name }}</strong>
+                        </div>
+                        <div class="logo-maker-info">
+                          <div class="logo-maker-row">
+                              <label for="opacity-range">Background Opacity:</label>
+                              <input type="range" id="opacity-range" min="0" max="1" step="0.01" value="1">
+                          </div>
+                        <div class="logo-maker-row same-line">
+                          <select id="file-type" class="logo-maker-dropdown">
+                              <option value="png">png</option>
+                              <option value="jpg">jpg</option>
+                              <option value="pdf">pdf</option>
+                          </select>
+                          <button id="download-btn" class="logo-maker-download-button">Download</button>
+                      </div>                      
+                        <div class="logo-maker-row">
+                            <span>Click the logo on the top left to go back home.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.1.0/chroma.min.js"></script>
+    <script data-section-id="navbar" src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
+    <script src="{{ url_for('static', filename='js/generated-logo.js') }}"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const businessName = "{{ business_name }}"; 
+        const logoPlaceholder = document.getElementById('logo-placeholder');
+        const opacityRange = document.getElementById('opacity-range');
+        const downloadButton = document.getElementById('download-btn');
+
+        async function fetchFonts() {
+            try {
+                const response = await fetch('static/assets/font-list.json');
+                const fontData = await response.json();
+                const fonts = fontData.items.map(item => item.family);
+
+                const colors = chroma.scale(['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'])
+                                      .mode('lab')
+                                      .colors(100);
+
+                const fontSizes = ["60px", "66px", "72px", "78px", "84px", "92px", "100px"];
+
+                const randomFont = fonts[Math.floor(Math.random() * fonts.length)];
+                const randomColorIndex = Math.floor(Math.random() * colors.length);
+                const randomColor = colors[randomColorIndex];
+                const randomBgColorIndex = (randomColorIndex + Math.floor(Math.random() * (colors.length - 1) + 1)) % colors.length;
+                const randomBgColor = colors[randomBgColorIndex];
+                const randomFontSize = fontSizes[Math.floor(Math.random() * fontSizes.length)];
+
+                const fontLink = document.createElement('link');
+                fontLink.href = `https://fonts.googleapis.com/css2?family=${randomFont.replace(/ /g, '+')}&display=swap`;
+                fontLink.rel = 'stylesheet';
+                document.head.appendChild(fontLink);
+
+                fontLink.onload = () => {
+                    logoPlaceholder.style.fontFamily = randomFont;
+                    logoPlaceholder.style.color = randomColor;
+                    logoPlaceholder.style.fontSize = randomFontSize;
+                    logoPlaceholder.style.fontWeight = 'bold';
+                    logoPlaceholder.style.textShadow = '1px 1px 2px rgba(0,0,0,0.3)';
+                    logoPlaceholder.textContent = businessName;
+
+                    applyGradientBackground(logoPlaceholder, randomBgColor, opacityRange.value);
+                };
+
+                downloadButton.addEventListener('click', () => {
+                    const fileType = document.getElementById('file-type').value;
+                    downloadLogo(fileType, randomFont, randomFontSize, randomColor, randomBgColor, opacityRange.value);
+                });
+
+                opacityRange.addEventListener('input', () => {
+                    applyGradientBackground(logoPlaceholder, randomBgColor, opacityRange.value);
+                });
+
+            } catch (error) {
+                console.error('Error fetching font list:', error);
+            }
+        }
+
+        function applyGradientBackground(element, bgColor, opacity) {
+            const gradient = `linear-gradient(135deg, ${chroma(bgColor).darken().hex()}${Math.round(opacity * 255).toString(16).padStart(2, '0')}, ${bgColor}${Math.round(opacity * 255).toString(16).padStart(2, '0')})`;
+            element.style.backgroundImage = gradient;
+        }
+
+        function downloadLogo(fileType, font, fontSize, color, bgColor, opacity) {
+            const canvas = document.createElement('canvas');
+            const context = canvas.getContext('2d');
+
+            const scaleFactor = 2; // Increase this factor for higher resolution
+            const width = logoPlaceholder.clientWidth;
+            const height = logoPlaceholder.clientHeight;
+
+            canvas.width = width * scaleFactor;
+            canvas.height = height * scaleFactor;
+            context.scale(scaleFactor, scaleFactor);
+
+            const gradient = context.createLinearGradient(0, 0, width, height);
+            gradient.addColorStop(0, `${chroma(bgColor).darken().hex()}${Math.round(opacity * 255).toString(16).padStart(2, '0')}`);
+            gradient.addColorStop(1, `${bgColor}${Math.round(opacity * 255).toString(16).padStart(2, '0')}`);
+
+            context.fillStyle = gradient;
+            context.fillRect(0, 0, width, height);
+
+            const computedStyle = getComputedStyle(logoPlaceholder);
+            context.font = `${computedStyle.fontWeight} ${computedStyle.fontSize} ${font}`;
+            context.fillStyle = computedStyle.color;
+            context.textAlign = 'center';
+            context.textBaseline = 'middle';
+
+            context.shadowColor = computedStyle.textShadow.match(/rgba\((\d+), (\d+), (\d+), ([\d.]+)\)/)[0];
+            context.shadowOffsetX = 1;
+            context.shadowOffsetY = 1;
+            context.shadowBlur = 2;
+            context.fillText(businessName, width / 2, height / 2);
+
+            if (fileType === 'pdf') {
+                const pdf = new jsPDF({
+                    orientation: 'landscape',
+                    unit: 'px',
+                    format: [canvas.width, canvas.height]
+                });
+                pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, canvas.width, canvas.height);
+                pdf.save(`${businessName}.pdf`);
+            } else {
+                canvas.toBlob((blob) => {
+                    const link = document.createElement('a');
+                    link.href = URL.createObjectURL(blob);
+                    link.download = `${businessName}.${fileType}`;
+                    link.click();
+                }, `image/${fileType}`);
+            }
+        }
+
+        fetchFonts();
+    });
+    </script>
+</body>
+</html>

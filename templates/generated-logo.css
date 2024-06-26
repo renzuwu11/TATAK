@@ -1,0 +1,174 @@
+.logo-maker-container {
+    width: 100%;
+    display: flex;
+    overflow: auto;
+    min-height: 100vh;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .logo-maker-header {
+    width: 100%;
+    display: flex;
+    z-index: 100;
+    position: fixed;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--dl-color-gray-white);
+  }
+  
+  .logo-maker-navbar-interactive {
+    height: 92px;
+    align-self: stretch;
+    transition: 0.3s;
+    border-color: var(--dl-color-gray-black);
+    border-width: 1px;
+    flex-direction: row;
+    background-color: #ffffff;
+  }
+  
+  .logo-maker-navbar-interactive:focus {
+    position: fixed;
+  }
+  
+  .logo-maker-container1 {
+    flex: 0 0 auto;
+    width: 200px;
+    height: auto;
+    display: flex;
+    align-items: space-between;
+    flex-direction: column;
+  }
+  
+  .logo-maker-navlink {
+    display: contents;
+  }
+  
+  .logo-maker-image {
+    width: 80px;
+    height: 58px;
+    align-self: flex-start;
+    object-fit: cover;
+    text-decoration: none;
+  }
+  
+  .logo-maker-desktop-menu {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .logo-maker-links {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+  
+  .logo-maker-nav52 {
+    color: rgb(232, 149, 171);
+    margin-left: var(--dl-space-space-unit);
+    margin-right: var(--dl-space-space-unit);
+  }
+  
+  .logo-maker-content {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 120px; /* Adjust margin-top to avoid overlap with the header */
+  }
+  
+  .logo-maker-sidebar {
+    flex: 0 0 300px;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-right: 1px solid #ddd;
+  }
+  
+  .logo-maker-main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .logo-placeholder {
+    width: 100%;
+    height: 400px;
+    background-color: #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed #bbb;
+    color: #777;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  #download-btn {
+    display: block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: rgb(232, 149, 171);
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  @media(max-width: 991px) {
+    .logo-maker-hero1 {
+      flex-direction: column;
+    }
+  }
+  
+  @media(max-width: 767px) {
+    .logo-maker-navbar-interactive {
+      padding-left: var(--dl-space-space-twounits);
+      padding-right: var(--dl-space-space-twounits);
+    }
+    .logo-maker-desktop-menu {
+      display: none;
+    }
+    .logo-maker-burger-menu {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .logo-maker-nav12 {
+      margin-bottom: var(--dl-space-space-unit);
+    }
+    .logo-maker-nav22 {
+      margin-bottom: var(--dl-space-space-unit);
+    }
+    .logo-maker-nav32 {
+      margin-bottom: var(--dl-space-space-unit);
+    }
+    .logo-maker-nav42 {
+      margin-bottom: var(--dl-space-space-unit);
+    }
+    .logo-maker-nav521 {
+      margin-bottom: var(--dl-space-space-unit);
+    }
+    .logo-maker-hero1 {
+      padding-left: var(--dl-space-space-twounits);
+      padding-right: var(--dl-space-space-twounits);
+    }
+  }
+  
+  @media(max-width: 479px) {
+    .logo-maker-navbar-interactive {
+      padding: var(--dl-space-space-unit);
+    }
+    .logo-maker-mobile-menu1 {
+      padding: 16px;
+    }
+    .logo-maker-hero1 {
+      padding-top: var(--dl-space-space-twounits);
+      padding-left: var(--dl-space-space-unit);
+      padding-right: var(--dl-space-space-unit);
+      padding-bottom: var(--dl-space-space-twounits);
+    }
+  }
+  
