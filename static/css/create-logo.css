@@ -16,7 +16,6 @@ body {
     overflow: hidden;
 }
 
-
 .logo-maker-body {
     display: flex;
     height: calc(100vh - 80px); 
@@ -89,9 +88,6 @@ body {
 }
 
 #download-logo {
-    left: 790px;
-    bottom: 45px;
-    position: absolute;
     font-size: 14px;
     transition: 0.3s;
     border-width: 0px;
@@ -99,11 +95,13 @@ body {
     background-color: rgb(255, 218, 228);
     padding: 10px 20px;
     cursor: pointer;
-    border-radius: 5px;
-}
+    border-radius: 5px; 
+    margin-top: 10px; 
+    margin-left: 10px;
+  }
 
-#download-logo:hover {
-    color: var(--dl-color-gray-white);
+  #download-logo:hover {
+    color: #ffffff;
     background-color: #E895AB;
 }
 
@@ -204,7 +202,6 @@ body {
     justify-content: center;
 }
 
-
 .angle-input input {
     display: none; 
 }
@@ -232,6 +229,27 @@ body {
     background-color: #ccc;
     box-shadow: 0 0 8px #fff;
 }
+
+.logo-maker-row {
+    margin-bottom: -21px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%; 
+  }
+  
+  .logo-maker-row.same-line {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .logo-maker-dropdown {
+    margin-top: 10px;
+    width: auto; 
+    border: 1px solid black; 
+    padding: 5px;
+  }
 
 @media(max-width: 991px) {
 .logo-maker-hero1 {
