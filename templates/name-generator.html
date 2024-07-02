@@ -157,7 +157,7 @@
                         <button type="submit" class="name-generator-navlink1 button">Generate Business Name</button>
                         <span class="name-generator-text15">Business Type:</span>
                         <label for="industry">
-                            <select required="true" class="name-generator-select" id="industry" name="industry">
+                            <select class="name-generator-select" id="industry" name="industry">
                                 <option value="Select your business type" class="name-generator-option">Select your business type</option>
                                 {% for type in business_types %}
                                     <option value="{{ type }}">{{ type }}</option>
@@ -180,7 +180,7 @@
                                 <option value="{{ length }}">{{ length }}</option>
                             {% endfor %}
                         </select>
-                    </form>
+                    </form>                    
                 </div>
             </div>
 

@@ -125,6 +125,7 @@
 }
 
 .logo-maker-row.same-line {
+  margin-top: -15px;
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -178,7 +179,22 @@
   max-height: calc(100vh - 160px); 
 }
 
+.refresh-btn {
+  font-size: 14px;
+  transition: 0.3s;
+  border-width: 0px;
+  text-decoration: none;
+  background-color: transparent;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
 #opacity-range {
+  margin-top: 10px;
+  margin-bottom: 10px;
   width: 70%;
   margin-bottom: 10px;
   -webkit-appearance: none;

@@ -5,7 +5,6 @@
     <meta property="og:title" content="TATAK" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
-    <meta charset="utf-8" />
     <style data-tag="reset-style-sheet">
         html { line-height: 1.15; }
         body { margin: 0; }
@@ -42,6 +41,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" data-tag="font"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@200;300;400;500;600;700;800&amp;display=swap" data-tag="font"/>
     <link rel="stylesheet" href="https://unpkg.com/@teleporthq/teleport-custom-scripts/dist/style.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome CSS -->
     <link rel="icon" href="{{ url_for('static', filename='public/tatak-logo-200h.png') }}" type="image/png">
     <style>
         @keyframes fade-in-left {
@@ -53,6 +53,24 @@
                 opacity: 1;
                 transform: translateX(0);
             }
+        }
+        .refresh-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #ffffff;
+            border: 1px solid #cccccc;
+            border-radius: 50%;
+            padding: 10px;
+            cursor: pointer;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .refresh-button i {
+            font-size: 18px;
+            color: #333333;
         }
     </style>
 </head>
@@ -81,10 +99,13 @@
                 </header>
             </div>
             <div class="logo-maker-content">
-                <div class="logo-preview-container">
+                <div class="logo-preview-container" style="position: relative;">
                     <div class="logo-preview" id="logo-placeholder">
                         <!-- The generated logo will be placed here -->
                     </div>
+                    <button id="refresh-btn" class="refresh-button">
+                        <i class="fas fa-sync-alt" style="color: #E895AB;;"></i> 
+                    </button>
                 </div>
                 <div class="separator"></div>
                 <div class="logo-maker-main">
@@ -122,6 +143,9 @@
         const logoPlaceholder = document.getElementById('logo-placeholder');
         const opacityRange = document.getElementById('opacity-range');
         const downloadButton = document.getElementById('download-btn');
+        const refreshButton = document.getElementById('refresh-btn');
+
+        let currentBgColor;
 
         async function fetchFonts() {
             try {
@@ -135,36 +159,19 @@
 
                 const fontSizes = ["60px", "66px", "72px", "78px", "84px", "92px", "100px"];
 
-                const randomFont = fonts[Math.floor(Math.random() * fonts.length)];
-                const randomColorIndex = Math.floor(Math.random() * colors.length);
-                const randomColor = colors[randomColorIndex];
-                const randomBgColorIndex = (randomColorIndex + Math.floor(Math.random() * (colors.length - 1) + 1)) % colors.length;
-                const randomBgColor = colors[randomBgColorIndex];
-                const randomFontSize = fontSizes[Math.floor(Math.random() * fontSizes.length)];
-
-                const fontLink = document.createElement('link');
-                fontLink.href = `https://fonts.googleapis.com/css2?family=${randomFont.replace(/ /g, '+')}&display=swap`;
-                fontLink.rel = 'stylesheet';
-                document.head.appendChild(fontLink);
-
-                fontLink.onload = () => {
-                    logoPlaceholder.style.fontFamily = randomFont;
-                    logoPlaceholder.style.color = randomColor;
-                    logoPlaceholder.style.fontSize = randomFontSize;
-                    logoPlaceholder.style.fontWeight = 'bold';
-                    logoPlaceholder.style.textShadow = '1px 1px 2px rgba(0,0,0,0.3)';
-                    logoPlaceholder.textContent = businessName;
-
-                    applyGradientBackground(logoPlaceholder, randomBgColor, opacityRange.value);
-                };
+                generateLogo(fonts, colors, fontSizes);
 
                 downloadButton.addEventListener('click', () => {
                     const fileType = document.getElementById('file-type').value;
-                    downloadLogo(fileType, randomFont, randomFontSize, randomColor, randomBgColor, opacityRange.value);
+                    downloadLogo(fileType);
                 });
 
                 opacityRange.addEventListener('input', () => {
-                    applyGradientBackground(logoPlaceholder, randomBgColor, opacityRange.value);
+                    applyGradientBackground(currentBgColor, opacityRange.value);
+                });
+
+                refreshButton.addEventListener('click', () => {
+                    generateLogo(fonts, colors, fontSizes);
                 });
 
             } catch (error) {
@@ -172,12 +179,37 @@
             }
         }
 
-        function applyGradientBackground(element, bgColor, opacity) {
-            const gradient = `linear-gradient(135deg, ${chroma(bgColor).darken().hex()}${Math.round(opacity * 255).toString(16).padStart(2, '0')}, ${bgColor}${Math.round(opacity * 255).toString(16).padStart(2, '0')})`;
-            element.style.backgroundImage = gradient;
+        function generateLogo(fonts, colors, fontSizes) {
+            const randomFont = fonts[Math.floor(Math.random() * fonts.length)];
+            const randomColorIndex = Math.floor(Math.random() * colors.length);
+            const randomColor = colors[randomColorIndex];
+            const randomBgColorIndex = (randomColorIndex + Math.floor(Math.random() * (colors.length - 1) + 1)) % colors.length;
+            currentBgColor = colors[randomBgColorIndex];
+            const randomFontSize = fontSizes[Math.floor(Math.random() * fontSizes.length)];
+
+            const fontLink = document.createElement('link');
+            fontLink.href = `https://fonts.googleapis.com/css2?family=${randomFont.replace(/ /g, '+')}&display=swap`;
+            fontLink.rel = 'stylesheet';
+            document.head.appendChild(fontLink);
+
+            fontLink.onload = () => {
+                logoPlaceholder.style.fontFamily = randomFont;
+                logoPlaceholder.style.color = randomColor;
+                logoPlaceholder.style.fontSize = randomFontSize;
+                logoPlaceholder.style.fontWeight = 'bold';
+                logoPlaceholder.style.textShadow = '1px 1px 2px rgba(0,0,0,0.3)';
+                logoPlaceholder.textContent = businessName;
+
+                applyGradientBackground(currentBgColor, opacityRange.value);
+            };
         }
 
-        function downloadLogo(fileType, font, fontSize, color, bgColor, opacity) {
+        function applyGradientBackground(bgColor, opacity) {
+            const gradient = `linear-gradient(135deg, ${chroma(bgColor).darken().hex()}${Math.round(opacity * 255).toString(16).padStart(2, '0')}, ${bgColor}${Math.round(opacity * 255).toString(16).padStart(2, '0')})`;
+            logoPlaceholder.style.backgroundImage = gradient;
+        }
+
+        function downloadLogo(fileType) {
             const canvas = document.createElement('canvas');
             const context = canvas.getContext('2d');
 
@@ -190,22 +222,25 @@
             context.scale(scaleFactor, scaleFactor);
 
             const gradient = context.createLinearGradient(0, 0, width, height);
-            gradient.addColorStop(0, `${chroma(bgColor).darken().hex()}${Math.round(opacity * 255).toString(16).padStart(2, '0')}`);
-            gradient.addColorStop(1, `${bgColor}${Math.round(opacity * 255).toString(16).padStart(2, '0')}`);
+            gradient.addColorStop(0, `${chroma(currentBgColor).darken().hex()}${Math.round(opacityRange.value * 255).toString(16).padStart(2, '0')}`);
+            gradient.addColorStop(1, `${currentBgColor}${Math.round(opacityRange.value * 255).toString(16).padStart(2, '0')}`);
 
             context.fillStyle = gradient;
             context.fillRect(0, 0, width, height);
 
             const computedStyle = getComputedStyle(logoPlaceholder);
-            context.font = `${computedStyle.fontWeight} ${computedStyle.fontSize} ${font}`;
+            context.font = `${computedStyle.fontWeight} ${computedStyle.fontSize} ${computedStyle.fontFamily}`;
             context.fillStyle = computedStyle.color;
             context.textAlign = 'center';
             context.textBaseline = 'middle';
 
-            context.shadowColor = computedStyle.textShadow.match(/rgba\((\d+), (\d+), (\d+), ([\d.]+)\)/)[0];
-            context.shadowOffsetX = 1;
-            context.shadowOffsetY = 1;
-            context.shadowBlur = 2;
+            const shadowColor = computedStyle.textShadow.match(/rgba\((\d+), (\d+), (\d+), ([\d.]+)\)/);
+            if (shadowColor) {
+                context.shadowColor = shadowColor[0];
+                context.shadowOffsetX = 1;
+                context.shadowOffsetY = 1;
+                context.shadowBlur = 2;
+            }
             context.fillText(businessName, width / 2, height / 2);
 
             if (fileType === 'pdf') {
