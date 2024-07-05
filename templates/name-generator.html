@@ -193,22 +193,22 @@
     });
 
     const keywordInput = document.getElementById('keyword');
-keywordInput.addEventListener('input', function(event) {
-    const input = event.target;
-    const maxLength = 20;
+        keywordInput.addEventListener('input', function(event) {
+            const input = event.target;
+            const maxLength = 20;
 
-    // Restrict input to alphanumeric characters and hyphens
-    input.value = input.value.replace(/[^a-zA-Z0-9-]/g, '');
+            // Restrict input to alphanumeric characters and hyphens
+            input.value = input.value.replace(/[^a-zA-Z0-9-]/g, '');
 
-    // Check length and set custom validity message
-    if (input.value.length > maxLength) {
-        input.setCustomValidity(`Keyword must be no more than ${maxLength} characters.`);
-        input.reportValidity();
-        input.value = input.value.substring(0, maxLength);
-    } else {
-        input.setCustomValidity('');
-    }
-});
+            // Check length and set custom validity message
+            if (input.value.length > maxLength) {
+                input.setCustomValidity(`Keyword must be no more than ${maxLength} characters.`);
+                input.reportValidity();
+                input.value = input.value.substring(0, maxLength);
+            } else {
+                input.setCustomValidity('');
+            }
+        });
 </script>
 
 </body>
